@@ -5,5 +5,13 @@ class Cart < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :products, through: :cart_items
 
-  # TODO: lógica para marcar o carrinho como abandonado e remover se abandonado
+  scope :inactive_for, ->(time) { where("last_interaction_at <= ?", time) }
+  
+  def mark_as_abandoned
+    update(abandoned: true) if last_interaction_at <= 3.hours.ago
+  end
+
+  def remove_if_abandoned
+    destroy if last_interaction_at <= 7.days.ago
+  end
 end
