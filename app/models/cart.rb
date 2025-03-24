@@ -5,8 +5,8 @@ class Cart < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :products, through: :cart_items
 
-  scope :inactive_for, ->(time) { where("last_interaction_at <= ?", time) }
-  
+  scope :inactive_for, ->(time) { where("last_interaction_at <= ?", Time.current - time) }
+
   def mark_as_abandoned
     update(abandoned: true) if last_interaction_at <= 3.hours.ago
   end
