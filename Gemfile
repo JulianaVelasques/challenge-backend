@@ -18,7 +18,9 @@ gem 'guard-livereload', require: false
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem 'rspec-rails', '~> 6.1.0'
+  gem 'rack-cors'
 end
 
-group :development do
+group :test do
+  gem 'factory_bot_rails'
 end

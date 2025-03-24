@@ -29,13 +29,14 @@ services:
       - REDIS_URL=redis://redis:6379/0
   test:
     build: .
-    command: sh -c "bundle exec rails db:schema:load db:seed && bundle exec rspec"
+    command: bundle exec rspec
     volumes:
       - .:/rails
     depends_on:
       - db
       - redis
     environment:
+      - RAILS_ENV=test
       - DATABASE_URL=postgresql://postgres:password@db:5432/store_test
       - REDIS_URL=redis://redis:6379/0
 volumes:
