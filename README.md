@@ -40,17 +40,20 @@ O desafio consiste em uma API para gerenciamento do um carrinho de compras de e-
 ├── app/                 # Código-fonte da aplicação
 │   ├── controllers/     # Controllers da API
 │   ├── models/          # Modelos do ActiveRecord
-│   ├── jobs/            # Background jobs (Sidekiq)
+│   ├── sidekiq/         # Background jobs
 │   ├── services/        # Serviços auxiliares
 ├── config/              # Configurações da aplicação
 ├── db/                  # Migrations e schema do banco
 ├── spec/                # Testes automatizados (RSpec)
 │   ├── factories/       # FactoryBot para geração de dados
+│   ├── models/          # Testes dos models
 │   ├── requests/        # Testes de integração da API
+│   ├── routing/          # Testes dos routes
 │   ├── sidekiq/         # Testes dos jobs do Sidekiq
 ├── Dockerfile           # Configuração do container
 ├── docker-compose.yml   # Orquestração dos containers
 ├── bin/docker-entrypoint # Script de inicialização do container
+├── challenge_description # Texto sobre os requisitos do Desafio
 └── README.md            # Documentação do projeto
 ```
 ## :wrench: Built With
